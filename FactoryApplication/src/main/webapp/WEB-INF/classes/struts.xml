@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts  
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">  
+
+<struts>
+<constant name="struts.tiles.config" value="/WEB-INF/tiles.xml" />
+ <package name="default" namespace="/" extends="struts-default">
+ 	<result-types>
+ 		<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+ 		<result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+ 	</result-types>
+ 	<action name="validateLogin" class="com.login.action.Login" method="validateLogin">
+	
+	    <result name="success" type="json">
+	    	<param name="success">isValidLogin</param>
+	    </result>
+	    <result name="error" type="json">
+	    	<param name="success">isValidLogin</param>
+	    </result>
+	</action>
+	<action name="logout" class="com.logout.action.Logout" method="logout">
+		<result name="success" >/login.jsp</result>
+	</action>
+	<action name="failure" >
+		<result name="success" type="tiles">failure</result>
+	</action>
+	<action name="addProduct" >
+		<result name="success" type="tiles">addProduct</result>
+	</action>
+	<action name="productHome" >
+		<result name="success" type="tiles">productHome</result>
+	</action>
+	<action name="addShift" >
+		<result name="success" type="tiles">addShift</result>
+	</action>
+	<action name="shift" >
+		<result name="success" type="tiles">shift</result>
+	</action>
+	<action name="viewShift" >
+		<result name="success" type="tiles">viewShift</result>
+	</action>
+	<action name="payrollHome" >
+		<result name="success" type="tiles">payrollHome</result>
+	</action>
+	<action name="onboardEmployee" >
+		<result name="success" type="tiles">onboardEmployee</result>
+	</action>
+	<action name="attendance" >
+		<result name="success" type="tiles">attendance</result>
+	</action>
+ </package>
+ <package name="Factory" namespace="/products" extends="struts-default">
+ 	<result-types>
+ 		<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+ 		<result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+ 	</result-types>
+	<action name="products" class="com.product.action.ProductController" method="getProducts">
+		<result name="success" type="tiles">product</result>
+		<result name="error">/NoRecords.jsp</result>
+	</action>
+	<action name="viewProduct" class="com.product.action.ProductController" method="getSkillsRequired" >
+		<result name="success" type="tiles">skills</result>
+		<result name="error">/NoRecords.jsp</result>
+	</action>
+	<action name="getProductListJSON" class="com.product.action.ProductController" method="getProductListJSON" >
+		<result type="json">
+      		<param name="root">productMap</param>
+    	</result>
+	</action>
+	<action name="getSkillListJSON" class="com.product.action.ProductController" method="getSkillsListJSON" >
+		<result type="json">
+      		<param name="root">skillMap</param>
+    	</result>
+	</action>
+	<action name="getSpareListJSON" class="com.product.action.ProductController" method="getSpareListJSON" >
+		<result type="json">
+      		<param name="root">spareMap</param>
+    	</result>
+	</action>
+	<action name="getCapacityPlanJSON" class="com.product.action.ProductController" method="getCapacityPlanJSON" >
+		<result type="json">
+      		<param name="root">capacityMap</param>
+    	</result>
+	</action>
+	<action name="addProduct" class="com.product.action.ProductController" method="addProduct">
+		<result name="success" type="json">
+      		<param name="root">addProductStatus</param>
+    	</result>
+    	<result name="error" type="json">
+      		<param name="root">addProductStatus</param>
+    	</result>
+	</action>
+	
+	<action name="*" class="com.product.action.ProductController" method="{1}">
+		<result name="success">/success.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+</package>
+ <package name="Payroll" namespace="/payroll" extends="struts-default">
+	 <result-types>
+	 		<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+	 		<result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+	 </result-types>
+	 <!-- <action name="login" class="com.payroll.action.PayRollController" method="validateLogin">
+			<result name="success" type="tiles">payrollHome</result>
+			<result name="error">/login.jsp</result>
+	</action> -->
+	<!-- <action name="validateLogin" class="com.payroll.action.PayRollController" method="validateLogin">
+	
+	    <result name="success" type="json">
+	    	<param name="success">isValidLogin</param>
+	    </result>
+	    <result name="error" type="json">
+	    	<param name="success">isValidLogin</param>
+	    </result>
+	</action>
+	<action name="logout" class="com.payroll.action.PayRollController" method="logout">
+	
+	    <result name="success" >/login.jsp</result>
+	</action> -->
+	<action name="getEmployeeDetails" class="com.payroll.action.PayRollController" method="getEmployeeDetails" >
+		<result type="json">
+      		<param name="root">employeeMap</param>
+    	</result>
+	</action>
+	<action name="addEmployee" class="com.payroll.action.PayRollController" method="addEmployee">
+		<result name="success" type="json">
+      		<param name="root">addEmployeeStatus</param>
+    	</result>
+    	<result name="error" type="json">
+      		<param name="root">addEmployeeStatus</param>
+    	</result>
+	</action>
+	<action name="getEmployeeAttendance" class="com.payroll.action.PayRollController" method="getAttendance" >
+		<result type="json">
+      		<param name="root">attendanceMap</param>
+    	</result>
+	</action>
+
+ </package>
+<package name="Shift" namespace="/shift" extends="struts-default">
+	<result-types>
+	 		<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+	 		<result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+	 </result-types>
+	<action name="getEmpShift" class="com.shift.action.ShiftController" method="getShiftPlanMap" >
+		<result type="json">
+      		<param name="root">shiftPlan</param>
+    	</result>
+	</action>
+	<action name="addShift" class="com.shift.action.ShiftController" method="addShift" >
+		<result name="success" type="tiles">addShift</result>
+		<result name="error">/failure.jsp</result>
+	</action>
+	<action name="getShiftSchedule" class="com.shift.action.ShiftController" method="getShiftSchedule" >
+		<result type="json">
+      		<param name="root">shiftScheduleMap</param>
+    	</result>
+	</action>
+	<action name="getTeamShift" class="com.shift.action.ShiftController" method="getTeamShiftDetails" >
+		<result type="json">
+      		<param name="root">teamShiftMap</param>
+    	</result>
+	</action>
+</package>
+</struts>

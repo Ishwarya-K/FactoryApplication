@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="product" template="/Products.jsp">
+	    <put-attribute name="title" value="product"/>
+	    <put-attribute name="header" value="/header.jsp"/>
+	    <put-attribute name="menu" value="/Menu.jsp"/>
+    </definition>
+    <definition name="skills" template="/Skills.jsp">
+	    <put-attribute name="title" value="skills"/>
+	    <put-attribute name="header" value="/ProductHeader.jsp"/>
+	    <put-attribute name="menu" value="/ProductRequirementMenu.jsp"/>
+    </definition>
+    <definition name="failure" template="/failure.jsp">
+	    <put-attribute name="title" value="failure"/>
+	    <put-attribute name="header" value="/header.jsp"/>
+	    <put-attribute name="menu" value="/ProductRequirementMenu.jsp"/>
+    </definition>
+    <definition name="addProduct" template="/AddProduct.jsp">
+	    <put-attribute name="title" value="Product"/>
+	    <put-attribute name="header" value="/ProductHeader.jsp"/>
+	    <put-attribute name="menu" value="/ProductMenu.jsp"/>
+    </definition>
+    <definition name="productHome" template="/index.jsp">
+	    <put-attribute name="title" value="Product"/>
+	    <put-attribute name="header" value="/ProductHeader.jsp"/>
+	    <put-attribute name="menu" value="/ProductMenu.jsp"/>
+    </definition>
+    <definition name="addShift" template="/addShift.jsp">
+	    <put-attribute name="title" value="AddShift"/>
+	    <put-attribute name="header" value="/ShiftHeader.jsp"/>
+	    <put-attribute name="menu" value="/ShiftMenu.jsp"/>
+    </definition>
+    <definition name="shift" template="/Shift.jsp">
+	    <put-attribute name="title" value="Shift"/>
+	    <put-attribute name="header" value="/ShiftHeader.jsp"/>
+	    <put-attribute name="menu" value="/ShiftMenu.jsp"/>
+    </definition>
+    <definition name="viewShift" template="/viewShift.jsp">
+	    <put-attribute name="title" value="viewShift"/>
+	    <put-attribute name="header" value="/ShiftHeader.jsp"/>
+	    <put-attribute name="menu" value="/ShiftMenu.jsp"/>
+    </definition>
+    <definition name="payrollHome" template="/payrollHome.jsp">
+	    <put-attribute name="title" value="payrollHome"/>
+	    <put-attribute name="header" value="/PayrollHeader.jsp"/>
+	    <put-attribute name="menu" value="/PayrollMenu.jsp"/>
+    </definition>
+    <definition name="onboardEmployee" template="/OnboardEmployee.jsp">
+	    <put-attribute name="title" value="onboardEmployee"/>
+	    <put-attribute name="header" value="/PayrollHeader.jsp"/>
+	    <put-attribute name="menu" value="/PayrollMenu.jsp"/>
+    </definition>
+    <definition name="attendance" template="/Attendance.jsp">
+	    <put-attribute name="title" value="attendance"/>
+	    <put-attribute name="header" value="/PayrollHeader.jsp"/>
+	    <put-attribute name="menu" value="/PayrollMenu.jsp"/>
+    </definition>
+    <definition name="error" template="/error.jsp">
+	    <put-attribute name="title" value="Error"/>
+	    <put-attribute name="header" value="/header.jsp"/>
+    </definition>
+</tiles-definitions>

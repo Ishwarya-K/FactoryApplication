@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>FactoryApplication</display-name>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+    <!--  <welcome-file>/GetProduct</welcome-file>-->
+  </welcome-file-list>
+  <context-param>
+  <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITION_CONFIG</param-name>
+  <param-value>/WEB-INF/tiles.xml</param-value>
+  </context-param>
+    <filter>
+    	<filter-name>AuthenticationFilter</filter-name>
+    	<filter-class>com.factory.filter.UserAuthenticationFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+	    <filter-name>AuthenticationFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+    	<filter-name>CacheControlFilter</filter-name>
+    	<filter-class>com.factory.filter.CacheControlFilter</filter-class>
+	</filter>
+	<filter-mapping>
+    	<filter-name>CacheControlFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <listener>  
+  		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>  
+  	</listener>  
+</web-app>
